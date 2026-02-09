@@ -118,8 +118,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private void loadSelectedModel() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        selectedModel = prefs.getString(PREF_MODEL, "GPT-4");
-        setTitle(getString(R.string.chat_title) + " (" + selectedModel + ")");
+        selectedModel = prefs.getString(PREF_MODEL, "Balanced");
+        setTitle(getString(R.string.chat_title) + " - " + selectedModel + " Mode");
     }
 
     private void addWelcomeMessage() {
@@ -156,15 +156,15 @@ public class ChatActivity extends AppCompatActivity {
 
     private void simulateAIResponse(String userMessage) {
         // This is a placeholder. In a real app, you would:
-        // 1. Send the message to your AI API with the selected model
-        // 2. Get the response
+        // 1. Send the message to MedObsMind LLMM API with the selected performance mode
+        // 2. Get the response from the MedObsMind (Large Language Medical Model)
         // 3. Display it in the chat
         
         String systemPrompt = getString(R.string.system_prompt);
-        String response = "This is a simulated response from " + selectedModel + 
-            ". In a production app, this would connect to the actual AI model API.\n\n" +
-            "Your message: \"" + userMessage + "\"\n\n" +
-            "System Prompt: " + systemPrompt;
+        String response = "This is a simulated response from MedObsMind LLMM (running in " + selectedModel + " mode).\n\n" +
+            "MedObsMind is a Large Language Medical Model specialized for healthcare and medical informatics.\n\n" +
+            "In a production app, Dsquare Med-assist platform would connect to the MedObsMind LLMM API.\n\n" +
+            "Your message: \"" + userMessage + "\"";
 
         ChatMessage aiMessage = new ChatMessage(response, false);
         messages.add(aiMessage);

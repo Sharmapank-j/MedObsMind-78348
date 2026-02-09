@@ -45,22 +45,22 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void loadSavedModel() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String savedModel = prefs.getString(PREF_MODEL, "GPT-4");
+        String savedModel = prefs.getString(PREF_MODEL, "Balanced");
 
         switch (savedModel) {
-            case "GPT-4":
+            case "Maximum Accuracy":
                 radioGpt4.setChecked(true);
                 break;
-            case "GPT-3.5":
+            case "Balanced":
                 radioGpt35.setChecked(true);
                 break;
-            case "Claude":
+            case "Fast Response":
                 radioClaude.setChecked(true);
                 break;
-            case "PaLM 2":
+            case "Detailed Analysis":
                 radioPalm.setChecked(true);
                 break;
-            case "LLaMA":
+            case "Standard":
                 radioLlama.setChecked(true);
                 break;
         }
@@ -76,15 +76,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         String selectedModel = "";
         if (selectedId == R.id.radioGpt4) {
-            selectedModel = "GPT-4";
+            selectedModel = "Maximum Accuracy";
         } else if (selectedId == R.id.radioGpt35) {
-            selectedModel = "GPT-3.5";
+            selectedModel = "Balanced";
         } else if (selectedId == R.id.radioClaude) {
-            selectedModel = "Claude";
+            selectedModel = "Fast Response";
         } else if (selectedId == R.id.radioPalm) {
-            selectedModel = "PaLM 2";
+            selectedModel = "Detailed Analysis";
         } else if (selectedId == R.id.radioLlama) {
-            selectedModel = "LLaMA";
+            selectedModel = "Standard";
         }
 
         // Save to SharedPreferences

@@ -42,7 +42,7 @@
                 android:id="@+id/radioGpt4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/model_gpt4"
+                android:text="@string/model_performance_high"
                 android:textSize="16sp"
                 android:padding="12dp" />
 
@@ -50,7 +50,7 @@
                 android:id="@+id/radioGpt35"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/model_gpt35"
+                android:text="@string/model_performance_balanced"
                 android:textSize="16sp"
                 android:padding="12dp" />
 
@@ -58,7 +58,7 @@
                 android:id="@+id/radioClaude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/model_claude"
+                android:text="@string/model_performance_fast"
                 android:textSize="16sp"
                 android:padding="12dp" />
 
@@ -66,7 +66,7 @@
                 android:id="@+id/radioPalm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/model_palm"
+                android:text="@string/model_performance_detailed"
                 android:textSize="16sp"
                 android:padding="12dp" />
 
@@ -74,7 +74,7 @@
                 android:id="@+id/radioLlama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/model_llama"
+                android:text="@string/model_performance_standard"
                 android:textSize="16sp"
                 android:padding="12dp" />
 

@@ -101,7 +101,20 @@ public class VideoCallActivity extends AppCompatActivity {
 
         CameraManager manager = (CameraManager) getSystemService(CAMERA_SERVICE);
         try {
-            String cameraId = isFrontCamera ? manager.getCameraIdList()[1] : manager.getCameraIdList()[0];
+            String[] cameraIdList = manager.getCameraIdList();
+            if (cameraIdList.length == 0) {
+                Toast.makeText(this, "No camera available", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            
+            // Select camera: front camera if available and requested, otherwise use first camera
+            String cameraId;
+            if (isFrontCamera && cameraIdList.length > 1) {
+                cameraId = cameraIdList[1];
+            } else {
+                cameraId = cameraIdList[0];
+            }
+            
             manager.openCamera(cameraId, stateCallback, backgroundHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -186,16 +199,18 @@ public class VideoCallActivity extends AppCompatActivity {
     private void simulateAIInterpretation() {
         // In a real app, this would:
         // 1. Capture frames from the camera
-        // 2. Send them to the AI model API for interpretation
-        // 3. Display the AI's analysis
+        // 2. Send them to the MedObsMind LLMM API for interpretation
+        // 3. Display the LLMM's visual analysis
         
-        String interpretation = "AI Interpretation (" + selectedModel + "):\n\n" +
-            "This is a simulated video interpretation response. In a production app, the AI model would:\n" +
+        String interpretation = "MedObsMind LLMM Interpretation (" + selectedModel + " mode):\n\n" +
+            "This is a simulated video interpretation response from MedObsMind (Large Language Medical Model).\n\n" +
+            "In a production app, the Dsquare Med-assist platform would:\n" +
+            "• Send video frames to MedObsMind LLMM API\n" +
             "• Analyze visual medical information in real-time\n" +
             "• Identify medical instruments or conditions\n" +
-            "• Provide contextual guidance\n" +
+            "• Provide contextual medical guidance\n" +
             "• Assist with medical documentation\n\n" +
-            "The actual implementation would send video frames to the AI API and receive interpretations.";
+            "MedObsMind LLMM is specialized for medical visual interpretation.";
         
         runOnUiThread(() -> {
             aiResponseCard.setVisibility(android.view.View.VISIBLE);
